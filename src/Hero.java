@@ -2,7 +2,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Hero {
+public class Hero extends AnimatedThing {
     private double x;
     private double y;
 
@@ -12,18 +12,11 @@ public class Hero {
         return sprite;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     private ImageView sprite;
 
     /*Constructeur*/
-    public Hero(double x, double y, String fileName){
+    public Hero (double x, double y, String fileName){
+        super(x,y,fileName,1);
         this.x=x;
         this.y=y;
 
@@ -31,6 +24,8 @@ public class Hero {
         sprite = new ImageView(spriteSheet);
 
         sprite.setViewport(new Rectangle2D(20,15,60,80));
+        sprite.setX(x);
+        sprite.setY(y);
 
     }
 }

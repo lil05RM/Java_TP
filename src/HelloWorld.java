@@ -11,20 +11,22 @@ import javafx.stage.Stage;
         //Scenery est une MACRO
         private static final Image SCENERY = new Image("desert.png",1200,400,true,true);
         final private ImageView imageViewSceneryLeft = new ImageView(SCENERY);
-        public Hero hero = new Hero(100,200,"heros.png");
+        public Hero hero = new Hero(100,270,"heros.png"); //Création du héros
 
+        @Override
         public void start(Stage primaryStage){
             primaryStage.setTitle("Demo");
             Group root = new Group();
-            Scene scene = new Scene(root, 800, 400);
+            GameScene scene = new GameScene(root);
             primaryStage.setScene(scene);
+
             primaryStage.show();
 
-            Button btn = new Button("Bonjour");
+            Button btn = new Button("Bonjour"); //Création du bouton
 
-            root.getChildren().add(imageViewSceneryLeft); //Affichage
-            root.getChildren().add(btn);
-            root.getChildren().add(hero.getSprite());
+            root.getChildren().add(imageViewSceneryLeft); //Affichage du désert
+            root.getChildren().add(btn); //Affichage du bouton
+            root.getChildren().add(hero.getSprite()); //Affichage du héro
         }
         public static void main(String[] args) {
             launch(args); //Definition dans la classe Application Javafx
