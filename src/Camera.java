@@ -22,4 +22,8 @@ public class Camera {
                 "x=" + x + "," + "y=" + y +
                 '}';
     }
+
+    /*public void update(long time){
+
+    }*/
 }

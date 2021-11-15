@@ -6,6 +6,11 @@ public abstract class AnimatedThing {
     private ImageView spriteSheet;
     private int attitude;
 
+    private int index;
+    private int maxIndex;
+    private int timeFrame;
+    private int offsetFrame;
+
     public ImageView getSpriteSheet(){ return spriteSheet; };
 
     public AnimatedThing(double x, double y, String filename, int attitude){

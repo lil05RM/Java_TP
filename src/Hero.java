@@ -23,9 +23,13 @@ public class Hero extends AnimatedThing {
         spriteSheet=new Image(fileName);
         sprite = new ImageView(spriteSheet);
 
-        sprite.setViewport(new Rectangle2D(20,15,60,80));
+        sprite.setViewport(new Rectangle2D(20,14,60,85));
         sprite.setX(x);
         sprite.setY(y);
 
     }
+
+    /*public void update(long time){
+
+    }*/
 }

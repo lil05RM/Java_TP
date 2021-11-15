@@ -24,9 +24,9 @@ import javafx.stage.Stage;
 
             Button btn = new Button("Bonjour"); //Création du bouton
 
-            root.getChildren().add(imageViewSceneryLeft); //Affichage du désert
-            root.getChildren().add(btn); //Affichage du bouton
-            root.getChildren().add(hero.getSprite()); //Affichage du héro
+            //root.getChildren().add(imageViewSceneryLeft); //Affichage du désert
+            //root.getChildren().add(btn); //Affichage du bouton
+            //root.getChildren().add(hero.getSprite()); //Affichage du héro
         }
         public static void main(String[] args) {
             launch(args); //Definition dans la classe Application Javafx
