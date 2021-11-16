@@ -9,6 +9,7 @@ public class GameScene extends Scene {
     staticThing right;
     Hero hero;
 
+
     /*Constructeur*/
     public GameScene(Group g) {
         super(g,800,400);
@@ -19,10 +20,10 @@ public class GameScene extends Scene {
         camera = new Camera (0,0); //Création de ma caméra avec ses coordonnées
         render();
 
-        hero = new Hero (100,270,"heros.png"); //Rendre visible image héro
-        g.getChildren().add(hero.getSprite());
+        hero = new Hero (100,270,"heros.png");
+        g.getChildren().add(hero.getSprite()); //Rendre visible image héro
 
-        //timer.start();
+        timer.start();
     }
 
     void render(){
@@ -31,20 +32,20 @@ public class GameScene extends Scene {
         right.getBackView().setViewport(new Rectangle2D(0,0,right.getW()-offset,right.getL()));
         right.getBackView().setX(right.getW()-offset);
         System.out.println(offset);
+        System.out.println(camera);
     }
 
-    /*AnimationTimer timer = new AnimationTimer() {
-        @Override
+    final long timeNanoSecond = System.nanoTime();
+    AnimationTimer timer = new AnimationTimer() {
         public void handle(long time) {
+            double tn = Math.abs((timeNanoSecond - time)/1000000000.0);
             hero.update(time);
             camera.update(time);
-            GameScene.update(time);
+            //GameScene.update(time);
+            //System.out.println(time);
+            //System.out.println(tn);
 
         }
-    }
-
-    public void update(long time){
-
-    }*/
+    };
 
 }

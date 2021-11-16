@@ -23,7 +23,7 @@ public class Camera {
                 '}';
     }
 
-    /*public void update(long time){
-
-    }*/
+    public void update(long time){
+    //Empty
+    }
 }

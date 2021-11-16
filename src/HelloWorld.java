@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
     public class HelloWorld extends Application{
         //Scenery est une MACRO
-        private static final Image SCENERY = new Image("desert.png",1200,400,true,true);
-        final private ImageView imageViewSceneryLeft = new ImageView(SCENERY);
-        public Hero hero = new Hero(100,270,"heros.png"); //Création du héros
+        //private static final Image SCENERY = new Image("desert.png",1200,400,true,true);
+        //final private ImageView imageViewSceneryLeft = new ImageView(SCENERY);
+        //public Hero hero = new Hero(100,270,"heros.png"); //Création du héros
 
         @Override
         public void start(Stage primaryStage){
