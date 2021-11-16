@@ -2,6 +2,9 @@ public class Camera {
     private int x;
     private int y;
 
+    private int timeToAccelerate = 1000; //Variable pour le temps avant une accélération du désert
+    private int acc=2; //Variable pour accélérer le défilement du désert
+
     public int getX() {
         return x;
     }
@@ -24,6 +27,9 @@ public class Camera {
     }
 
     public void update(long time){
-    //Empty
+        x = x+acc; //Défilement du désert
+        if(x%timeToAccelerate == 0){ //Condition quand le temps pour accélérer est arrivé
+            acc+= 1; //On augmente l'accélération
+        }
     }
 }

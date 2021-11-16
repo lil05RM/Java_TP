@@ -17,10 +17,10 @@ public class GameScene extends Scene {
         right=new staticThing(800,400,"desert.png");
         g.getChildren().add(right.getBackView()); //Rendre visible côté droit
         g.getChildren().add(left.getBackView()); //Rendre visible côté gauche
-        camera = new Camera (0,0); //Création de ma caméra avec ses coordonnées
+        camera = new Camera (1900,0); //Création de ma caméra avec ses coordonnées
         render();
 
-        hero = new Hero (100,270,"heros.png");
+        hero = new Hero (100,250,"heros.png");
         g.getChildren().add(hero.getSprite()); //Rendre visible image héro
 
         timer.start();
@@ -28,8 +28,8 @@ public class GameScene extends Scene {
 
     void render(){
         double offset = camera.getX()%left.getW();
-        left.getBackView().setViewport(new Rectangle2D(offset,0,left.getW()-offset,left.getL()));
-        right.getBackView().setViewport(new Rectangle2D(0,0,right.getW()-offset,right.getL()));
+        left.getBackView().setViewport(new Rectangle2D(offset,0,left.getW(),left.getL()));
+        right.getBackView().setViewport(new Rectangle2D(0,0,right.getW(),right.getL()));
         right.getBackView().setX(right.getW()-offset);
         System.out.println(offset);
         System.out.println(camera);
@@ -41,6 +41,7 @@ public class GameScene extends Scene {
             double tn = Math.abs((timeNanoSecond - time)/1000000000.0);
             hero.update(time);
             camera.update(time);
+            render();
             //GameScene.update(time);
             //System.out.println(time);
             //System.out.println(tn);
