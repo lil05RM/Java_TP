@@ -24,6 +24,12 @@ public class GameScene extends Scene {
         g.getChildren().add(hero.getSprite()); //Rendre visible image héro
 
         timer.start();
+
+        this.setOnMouseClicked( (event)->{
+            System.out.println("Jump");
+            //hero.jump();
+            hero.attitude = 2;
+        });
     }
 
     void render(){
@@ -31,8 +37,8 @@ public class GameScene extends Scene {
         left.getBackView().setViewport(new Rectangle2D(offset,0,left.getW(),left.getL()));
         right.getBackView().setViewport(new Rectangle2D(0,0,right.getW(),right.getL()));
         right.getBackView().setX(right.getW()-offset);
-        System.out.println(offset);
-        System.out.println(camera);
+        //System.out.println(offset);
+        //System.out.println(camera);
     }
 
     final long timeNanoSecond = System.nanoTime();

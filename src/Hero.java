@@ -20,4 +20,5 @@ public class Hero extends AnimatedThing {
         sprite.setY(y);
         */
     }
+
 }
