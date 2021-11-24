@@ -1,7 +1,5 @@
 import javafx.geometry.Rectangle2D;
 
-import java.util.ArrayList;
-
 public class Foe extends AnimatedThing {
     private double x;
     private double y;

@@ -4,28 +4,31 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameScene extends Scene {
-    Camera camera;
-    staticThing left;
-    staticThing right;
-    Hero hero;
-    Foe foe;
+    private Camera camera;
+    private staticThing left;
+    private staticThing right;
+    private Hero hero;
+    private Foe foe;
     public ArrayList<Foe> list=null;
+    private Random rand = new Random();
+    private int minValBetweenFoe = 50;
 
 
     /*Constructeur*/
-    public GameScene(Group g) {
-        super(g,800,400);
+    public GameScene(Group root) {
+        super(root,800,400);
         left=new staticThing(800,400,"desert.png");
         right=new staticThing(800,400,"desert.png");
-        g.getChildren().add(right.getBackView()); //Rendre visible côté droit
-        g.getChildren().add(left.getBackView()); //Rendre visible côté gauche
+        root.getChildren().add(right.getBackView()); //Rendre visible côté droit
+        root.getChildren().add(left.getBackView()); //Rendre visible côté gauche
         camera = new Camera (1900,0); //Création de ma caméra avec ses coordonnées
         render();
 
         hero = new Hero (100,250,"heros.png");
-        g.getChildren().add(hero.getSprite()); //Rendre visible image héro
+        root.getChildren().add(hero.getSprite()); //Rendre visible image héro
 
         timer.start();
 
@@ -36,9 +39,11 @@ public class GameScene extends Scene {
         });
 
         this.list = new ArrayList<>();
-        foe = new Foe (400,290,"foe.png");
+        foe = new Foe (800,290,"foe.png");
         list.add(foe);
-        g.getChildren().add(foe.getSprite()); //Rendre visible image foe
+        list.add(new Foe (rand.nextInt(800)+minValBetweenFoe,290,"foe.png"));
+        System.out.println(list);
+        root.getChildren().add(foe.getSprite()); //Rendre visible image foe
 
     }
 
