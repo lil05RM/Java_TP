@@ -6,9 +6,17 @@ public class Hero extends AnimatedThing {
     private double x;
     private double y;
 
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
     /*Constructeur*/
     public Hero (double x, double y, String fileName){
-        super(x,y,fileName,1);
+        super(x,y,fileName,1,85,100);
         this.x=x;
         this.y=y;
 

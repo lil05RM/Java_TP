@@ -3,11 +3,15 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 
+import java.util.ArrayList;
+
 public class GameScene extends Scene {
     Camera camera;
     staticThing left;
     staticThing right;
     Hero hero;
+    Foe foe;
+    public ArrayList<Foe> list=null;
 
 
     /*Constructeur*/
@@ -30,6 +34,12 @@ public class GameScene extends Scene {
             //hero.jump();
             hero.attitude = 2;
         });
+
+        this.list = new ArrayList<>();
+        foe = new Foe (400,290,"foe.png");
+        list.add(foe);
+        g.getChildren().add(foe.getSprite()); //Rendre visible image foe
+
     }
 
     void render(){
@@ -47,10 +57,22 @@ public class GameScene extends Scene {
             double tn = Math.abs((timeNanoSecond - time)/1000000000.0);
             hero.update(time);
             camera.update(time);
-            render();
+            foe.updateFoe(time);
+            render(); //Update de GameScene pour voir défilement désert
             //GameScene.update(time);
             //System.out.println(time);
             //System.out.println(tn);
+
+            //System.out.println(foe.getX());
+
+            for(Foe foe : list){
+                if(hero.collision(foe)){
+                    System.out.println("Collision");
+                }
+                /*else{
+                    System.out.println("Go");
+                }*/
+            }
 
         }
     };
