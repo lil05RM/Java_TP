@@ -9,7 +9,6 @@ public class Hero extends AnimatedThing {
     public double getX() {
         return x;
     }
-
     public double getY() {
         return y;
     }

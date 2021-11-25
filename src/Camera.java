@@ -8,7 +8,6 @@ public class Camera {
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
@@ -26,6 +25,7 @@ public class Camera {
                 '}';
     }
 
+    /*Méthode pour mettre à jour la caméra en fonction du temps */
     public void update(long time){
         x = x+acc; //Défilement du désert
         if(x%timeToAccelerate == 0){ //Condition quand le temps pour accélérer est arrivé

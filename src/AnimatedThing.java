@@ -24,24 +24,23 @@ public abstract class AnimatedThing {
     private int indexJump = 0;
     private int maxIndexJump = 1;
     private double timeFrameJump = 10;
+    private int yOffsetFrameJump = 160;
 
     private int indexFoe = 0;
     private int k = 0;
     private int maxIndexFoe = 5;
     private double timeFrameFoe = 6;
-    private int offsetFrameFoe = 48;
+    private int xOffsetFrameFoe = 48;
+    private int yOffsetFrameFoe = 20;
 
     private double spriteWidth;
     private double spriteHeight;
-
     public double getSpriteWidth() {
         return spriteWidth;
     }
-
     public double getSpriteHeight() {
         return spriteHeight;
     }
-
 
 
     /*Constructeur*/
@@ -55,6 +54,7 @@ public abstract class AnimatedThing {
         sprite = new ImageView(spriteSheet);
     }
 
+    /*Méthode pour mettre à jour le héro en fonction du temps */
     public void update(long time){
 
         switch(attitude){
@@ -67,7 +67,7 @@ public abstract class AnimatedThing {
                     index=index%(maxIndex+1); //Si index est incrémenté à 6 la valeur revient à 0
 
                 }
-                sprite.setViewport(new Rectangle2D((index*offsetFrame),0,85,100)); //Definition fenetre sur la spritesheet du héro
+                sprite.setViewport(new Rectangle2D((index*offsetFrame),0,spriteWidth,spriteHeight)); //Definition fenetre sur la spritesheet du héro
                 sprite.setX(x);
                 sprite.setY(y);
                 //System.out.println(index); //Affichage numero d'index
@@ -80,7 +80,7 @@ public abstract class AnimatedThing {
                     indexJump = 1;
                     attitude = 3; //Aller au saut vers le bas
                 }
-                sprite.setViewport(new Rectangle2D((indexJump*offsetFrame),160,85,100));
+                sprite.setViewport(new Rectangle2D((indexJump*offsetFrame),yOffsetFrameJump,spriteWidth,spriteHeight));
                 sprite.setY(y);
                 break;
 
@@ -91,7 +91,7 @@ public abstract class AnimatedThing {
                     indexJump = 0;
                     attitude = 1; //Retour à la course
                 }
-                sprite.setViewport(new Rectangle2D((indexJump*offsetFrame),160,85,100));
+                sprite.setViewport(new Rectangle2D((indexJump*offsetFrame),yOffsetFrameJump,spriteWidth,spriteHeight));
                 sprite.setY(y);
                 break;
 
@@ -102,6 +102,7 @@ public abstract class AnimatedThing {
 
     }
 
+    /*Méthode pour mettre à jour l'ennemi en fonction du temps */
     public void updateFoe(long time) {
         k += 1;
         if (k % timeFrameFoe == 0) { //Condition quand le temps entre chaque frame est dépassé
@@ -111,10 +112,9 @@ public abstract class AnimatedThing {
             indexFoe = indexFoe % (maxIndexFoe + 1); //Si index est incrémenté à 6 la valeur revient à 0
 
         }
-        sprite.setViewport(new Rectangle2D((indexFoe * offsetFrameFoe), 20, 49, 28)); //Definition fenetre sur la spritesheet du foe
+        sprite.setViewport(new Rectangle2D((indexFoe * xOffsetFrameFoe), yOffsetFrameFoe, spriteWidth, spriteHeight)); //Definition fenetre sur la spritesheet du foe
         sprite.setX(x);
         sprite.setY(y);
-        //System.out.println(index); //Affichage numero d'index
         sprite.setFitHeight(100);
         sprite.setFitWidth(100);
         sprite.setPreserveRatio(true);
@@ -122,10 +122,12 @@ public abstract class AnimatedThing {
 
     }
 
+    /*Création d'une méthode permettant de créer un rectangle en fonction de la position*/
     public Rectangle2D getHitBox(){
-        return new Rectangle2D(x,y,(spriteWidth-30),(spriteHeight-10));
+        return new Rectangle2D((x+30),(y+10),(spriteWidth-30),(spriteHeight-20));
     }
 
+    /*Méthode pour savoir s'il y a une intersection entre 2 rectangles de la méthode getHitBox()*/
     public boolean collision (AnimatedThing box){
         return box.getHitBox().intersects(this.getHitBox());
     }

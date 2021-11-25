@@ -28,7 +28,7 @@ import javafx.stage.Stage;
             primaryStage.setTitle("Demo");
             Group start = new Group();
 
-            Text text_1 = new Text("PRESS THE BUTTON TO START\n");
+            Text text_1 = new Text("RULE : CLICK TO AVOID HYENAS\n");
             text_1.setFill(Color.SADDLEBROWN);
             Font font = Font.font("Verdana",FontWeight.EXTRA_BOLD,30);
             text_1.setFont(font);
@@ -39,7 +39,7 @@ import javafx.stage.Stage;
             vbox.setBackground(new Background(new BackgroundFill(Color.AQUA, CornerRadii.EMPTY, Insets.EMPTY)));
             Scene t = new Scene(vbox, 800, 400);
 
-            Button btn = new Button("Start");
+            Button btn = new Button("Press to start");
             btn.setLayoutX(240);
             btn.setLayoutY(50);
             btn.setMaxWidth(400);
@@ -57,6 +57,22 @@ import javafx.stage.Stage;
                 GameScene scene = new GameScene(root);
                 primaryStage.setScene(scene);
             });
+
+            /*if (GameScene.perdu==true){
+                Group fin = new Group();
+                Text text_2 = new Text("PERDU\n");
+                text_1.setFill(Color.SADDLEBROWN);
+                Font police = Font.font("Verdana", FontWeight.EXTRA_BOLD,30);
+                text_1.setFont(police);
+                fin.getChildren().add(text_1);
+
+                VBox vboxFin = new VBox(fin);
+                vboxFin.setAlignment(Pos.CENTER);
+                Scene termine = new Scene(vboxFin, 800, 400);
+
+                primaryStage.setScene(termine);
+                primaryStage.show();
+            }*/
 
 
             /* Essais première séance
